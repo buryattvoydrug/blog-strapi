@@ -10,14 +10,6 @@ export default function Categories() {
           return (
             <div>
               <nav className="uk-navbar-container" data-uk-navbar>
-                <div className="uk-navbar-left">
-                  <ul className="uk-navbar-nav">
-                    <li>
-                      <div>Strapi Blog</div>
-                    </li>
-                  </ul>
-                </div>
-
                 <div className="uk-navbar-right">
                   <ul className="uk-navbar-nav">
                     {categories.data.map((category:any) => {

@@ -8,7 +8,6 @@ function App() {
   return (
     <>
       <Categories/>
-      
       <Routes>
         <Route path="/" element={<ArticlesList />} />
         <Route path="/article/:slug" element={<Article />} />

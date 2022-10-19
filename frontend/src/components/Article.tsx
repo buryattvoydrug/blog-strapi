@@ -1,15 +1,14 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown';
 import Moment from 'react-moment';
 import { useParams } from 'react-router-dom';
-import ARTICLES_QUERY from '../queries/article/articles';
+import ARTICLE_QUERY from '../queries/article/article';
 import Query from './Query';
 
 export default function Article() {
   let { slug } = useParams();
 
   return (
-    <Query query={ARTICLES_QUERY} slug={slug}>
+    <Query query={ARTICLE_QUERY} slug={slug}>
       {({ data: { articles } }:any) => {
         if (articles.data.length) {
           const imageUrl =
@@ -36,7 +35,6 @@ export default function Article() {
 
               <div className="uk-section">
                 <div className="uk-container uk-container-small">
-                  {/* <ReactMarkdown source={articles.data[0].attributes.content} /> */}
                   <p>
                     <Moment format="MMM Do YYYY">
                       {articles.data[0].attributes.published_at}

@@ -7,7 +7,6 @@ export default function Card({article}:any) {
       ? article.attributes.image.data.attributes.url
       : process.env.REACT_APP_BACKEND_URL +
         article.attributes.image.data.attributes.url;
-  console.log(article.attributes, 'h');
   return (
     <Link to={`/article/${article.attributes.slug}`} className="uk-link-reset">
       <div className="uk-card uk-card-muted">
