@@ -19,28 +19,20 @@ export default function Article() {
 
           return (
             <div>
-              <div className="uk-card uk-card-muted">
-                <div className="uk-card-media-top">
                   <img src={imageUrl} alt={articles.data[0].attributes.image.url} height="300" />
-                </div>
-                <div className="uk-card-body">
                   <p id="category" className="uk-text-uppercase">
                     {articles.data[0].attributes.category.data.attributes.name}
                   </p>
-                  <p id="title" className="uk-text-large">
+                  <p id="title" className="text-3xl font-bold underline">
                     {articles.data[0].attributes.title}
                   </p>
-                </div>
-              </div>
 
               <div className="uk-section">
-                <div className="uk-container uk-container-small">
                   <p>
                     <Moment format="MMM Do YYYY">
                       {articles.data[0].attributes.published_at}
                     </Moment>
                   </p>
-                </div>
               </div>
             </div>
           );
