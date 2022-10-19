@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import CATEGORIES_QUERY from '../queries/category/categories';
 import Query from './Query';
 
@@ -22,12 +23,12 @@ export default function Categories() {
                     {categories.data.map((category:any) => {
                       return (
                         <li key={category.attributes.slug}>
-                          <div
-                            // to={`/category/${category.attributes.slug}`}
+                          <Link
+                            to={`/category/${category.attributes.slug}`}
                             className="uk-link-reset"
                           >
                             {category.attributes.name}
-                          </div>
+                          </Link>
                         </li>
                       );
                     })}

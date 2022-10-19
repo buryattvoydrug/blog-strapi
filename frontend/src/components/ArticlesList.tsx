@@ -1,18 +1,19 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
 import ARTICLES_QUERY from '../queries/article/articles'
-import Article from './Article';
+import Articles from './Articles';
+import Card from './Card';
 import Query from './Query'
 
 export default function ArticlesList() {
+  let { slug } = useParams();
   console.log('k')
   return (
-    <Query query={ARTICLES_QUERY} id={null}>
+    <Query query={ARTICLES_QUERY} id={null} slug={slug}>
             {({ data: { articles } }:any) => {
               return (
                 <>
-                  {articles.data.map((article:any) => {
-                    return <Article article={article}/>
-                  })}
+                  <Articles items={articles.data}/>
                 </>
                 );
             }}
