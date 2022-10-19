@@ -5,9 +5,11 @@ export default function Articles({items}:any) {
   console.log(items);
   return (
     <>
-      {items.map((article:any) => {
+    {items.map((item: any) => {
+      items.map((article:any) => {
         return <Card article={article}/>
-      })}
+      })
+    })}
     </>
   )
 }
