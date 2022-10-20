@@ -15,11 +15,12 @@ interface IAuthor {
 }
 
 interface ICategory {
-  data: {
-    attributes: {
-      slug: string,
-      name: string,
-    }
+  attributes: {
+    slug: string,
+    name: string,
+    articles: {
+      data: Array<IArticle>,
+    },
   }
 }
 
@@ -31,14 +32,27 @@ interface IPicture {
   }
 }
 
-interface IArticle {
+export interface IArticle {
   attributes: {
     slug: string,
     title: string,
     description: string,
     content: string,
     author: IAuthor,
-    category: ICategory,
+    category: {
+      data: ICategory
+    },
+    image: IPicture,
+  }
+}
+
+export interface IArticles {
+  attributes: {
+    slug: string,
+    title: string,
+    category: {
+      data: ICategory
+    },
     image: IPicture,
   }
 }
@@ -52,7 +66,32 @@ export interface IArticleResponse {
 }
 
 export interface IArticlesResponse {
-  articles: {
-    data: Array<IArticle>
+  data: {
+    articles: {
+      data: Array<IArticles>
+    },
+  }
+}
+export interface IListProps {
+  title?: string, 
+  items?: Array<IArticles> | undefined,
+}
+export interface ICardProps {
+  article: IArticles,
+}
+
+export interface ICategoryResponse {
+  data: {
+    categories: {
+      data: Array<ICategory>
+    }
+  },
+}
+
+export interface ICategoriesResponse {
+  data: {
+    categories: {
+      data: Array<ICategory>
+    }
   },
 }

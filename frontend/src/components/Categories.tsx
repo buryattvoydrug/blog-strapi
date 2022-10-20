@@ -4,27 +4,25 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import CATEGORIES_QUERY from '../queries/category/categories';
 import Query from './Query';
+import { ICategoriesResponse } from '../types';
 
 
 function CategoryListMobile () {
   return (
     <Query query={CATEGORIES_QUERY} id={null}>
-        {({ data: { categories } }:any) => {
+        {({ data: { categories } }: ICategoriesResponse) => {
+
           return (
             <div>
               <nav className="uk-navbar-container" data-uk-navbar>
                 <div className="uk-navbar-right">
                   <ul className="uk-navbar-nav">
-                    {categories.data.map((category:any) => {
+                    {categories.data.map((category) => {
                       return (
                         <Disclosure.Button
                           key={category.attributes.slug}
                           as="a"
-                          className={classNames(
-                            category.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                            'block px-3 py-2 rounded-md text-base font-medium'
-                          )}
-                          aria-current={category.current ? 'page' : undefined}
+                          className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
                         >
                           <Link
                             to={`/category/${category.attributes.slug}`}
@@ -48,22 +46,18 @@ function CategoryListMobile () {
 function CategoryListDesktop () {
   return (
     <Query query={CATEGORIES_QUERY} id={null}>
-        {({ data: { categories } }:any) => {
+        {({ data: { categories } }: ICategoriesResponse) => {
           return (
             <div>
               <nav className="uk-navbar-container" data-uk-navbar>
                 <div className="uk-navbar-right">
                   <ul className="uk-navbar-nav">
-                    {categories.data.map((category:any) => {
+                    {categories.data.map((category) => {
                       return (
                         <Disclosure.Button
                           key={category.attributes.slug}
                           as="a"
-                          className={classNames(
-                            category.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                            'px-3 py-2 rounded-md text-sm font-medium'
-                          )}
-                          aria-current={category.current ? 'page' : undefined}
+                          className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
                         >
                           <Link
                             to={`/category/${category.attributes.slug}`}
@@ -82,10 +76,6 @@ function CategoryListDesktop () {
         }}
       </Query>
   )
-}
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(' ')
 }
 
 export default function Categories() {
