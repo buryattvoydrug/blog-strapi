@@ -28,19 +28,6 @@ export default function Card({article}:any) {
                 <p className="text-sm font-medium text-gray-900">{article.attributes.category.data.attributes.name}</p>
               </div>
             </div>
-      {/* <div className="uk-card uk-card-muted">
-        <div className="uk-card-media-top">
-          <img src={imageUrl} alt={article.attributes.image.url} height="300" />
-        </div>
-        <div className="uk-card-body">
-          <p id="category" className="uk-text-uppercase">
-            {article.attributes.category.data.attributes.name}
-          </p>
-          <p id="title" className="uk-text-large">
-            {article.attributes.title}
-          </p>
-        </div>
-      </div> */}
     </Link>
   )
 }

@@ -19,14 +19,8 @@ export default function Category() {
       {({ data: { categories } }: any) => {
         if (categories.data.length) {
           return (
-            <div>
-              <div className="uk-section">
-                <div className="uk-container uk-container-large">
-                  <h1>{categories.data[0].attributes.name}</h1>
-                  <Articles items={categories.data[0].attributes.articles.data} />
-                </div>
-              </div>
-            </div>
+                  <ArticlesList title={categories.data[0].attributes.name} 
+                                items={categories.data[0].attributes.articles.data}/>
           );
         }
       }}

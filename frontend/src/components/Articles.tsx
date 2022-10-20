@@ -6,9 +6,7 @@ export default function Articles({items}:any) {
   return (
     <>
     {items.map((item: any) => {
-      items.map((article:any) => {
-        return <Card article={article}/>
-      })
+        return <Card article={item}/>
     })}
     </>
   )

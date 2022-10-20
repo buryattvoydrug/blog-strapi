@@ -9,7 +9,7 @@ function App() {
     <>
       <Categories/>
       <Routes>
-        <Route path="/" element={<ArticlesList />} />
+        <Route path="/" element={<ArticlesList title="Recent posts"/>} />
         <Route path="/article/:slug" element={<Article />} />
         <Route path="/category/:slug" element={<Category />} />
       </Routes>
