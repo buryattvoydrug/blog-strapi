@@ -7,6 +7,22 @@ const ARTICLE_QUERY = gql`
         attributes {
           slug
           title
+          description
+          content
+          author {
+            data {
+              attributes {
+                name
+                picture {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
           category {
             data {
               attributes {
