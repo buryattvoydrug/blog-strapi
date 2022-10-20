@@ -1,16 +1,16 @@
-import React from 'react'
 import ReactMarkdown from 'react-markdown';
-import Moment from 'react-moment';
 import { useParams } from 'react-router-dom';
 import rehypeRaw from 'rehype-raw';
 import ARTICLE_QUERY from '../queries/article/article';
+import { IArticleResponse } from '../types';
 import Query from './Query';
 
 export default function Article() {
   let { slug } = useParams();
   return (
     <Query query={ARTICLE_QUERY} slug={slug}>
-      {({ data: { articles } }:any) => {
+
+      {( {data: { articles }}: IArticleResponse) => {
         if (articles.data.length) {
           const imageUrl =
             process.env.NODE_ENV !== "development"
@@ -22,7 +22,6 @@ export default function Article() {
               ? articles.data[0].attributes.author.data.attributes.picture.data.attributes.url
               : process.env.REACT_APP_BACKEND_URL +
                 articles.data[0].attributes.author.data.attributes.picture.data.attributes.url;
-          console.log(articles.data[0].attributes)
           return (
             <div className="bg-white">
               <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -38,19 +37,16 @@ export default function Article() {
                     <p className="p-5 text-l font-normal tracking-tight text-gray-900">
                       <ReactMarkdown children={articles.data[0].attributes.content} rehypePlugins={[rehypeRaw]}/>
                     </p>
-                    <img className="p-5 tracking-tight" src={imageUrl} alt={articles.data[0].attributes.image.url} height="300" />
+                    <img className="p-5 tracking-tight" src={imageUrl} alt={articles.data[0].attributes.image.data.attributes.url} height="300" />
                     <div className="p-5 flex -space-x-1 overflow-hidden">
                       <img
                         className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
                         src={authorImageUrl}
                         alt=""
                       />
-                      <p className="text-l pl-3 pr-10 font-bold tracking-tight text-gray-900 font-light">
+                      <p className="text-l pl-3 pr-10 tracking-tight text-gray-900 font-light">
                         {articles.data[0].attributes.author.data.attributes.name}
                       </p>
-                      <Moment format="MMM Do YYYY">
-                        {articles.data[0].attributes.published_at}
-                      </Moment>
                     </div>
               </div>
             </div>
