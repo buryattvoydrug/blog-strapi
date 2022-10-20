@@ -7,7 +7,7 @@ export default function Articles(props: IListProps) {
   return (
     <>
     {items && items.map((item) => {
-        return <Card article={item}/> 
+        return <Card key={item.attributes.slug} article={item}/> 
     })}
     </>
   )
